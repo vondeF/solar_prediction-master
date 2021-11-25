@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "ed400510-b218-4f1d-be59-dfe6cafc5a03",
+		"name": "1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "init",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": [
+								"/C:/pyRestTemplate/trained_model.mdl",
+								"/C:/pyRestTemplate/training_dataset_nvchb.csv",
+								"/C:/pyRestTemplate/updating_dataset_nvchb.csv",
+								"/C:/pyRestTemplate/X_scaler_params.sca",
+								"/C:/pyRestTemplate/y_scaler_params.sca"
+							]
+						},
+						{
+							"key": "parameters",
+							"value": "{\n  \"geography\": {\n    \"latitude\": 56.11,\n    \"longitude\": 47.48,\n    \"timezone\": \"Europe/Moscow\"\n  },\n  \"pv_array\": {\n    \"pv_tilt_angle\": 40,\n    \"pv_azimuth_angle\": 180,\n    \"pv_modules_number\": 1,\n    \"pv_module_params\": {\n      \"stc_power\": 298.5,\n      \"area\": 1.5,\n      \"kt\": -0.38\n    }\n  },\n  \"training\": {\n    \"predictors\": [\n      \"aoi\",\n      \"T\",\n      \"U\",\n      \"Сl\"\n    ],\n    \"predictand\": \"I\"\n  },\n  \"files_destinations\": {\n    \"trained_model\": \".\\\\forecasting\\\\trained_model.mdl\",\n    \"X_scaler_params\": \".\\\\forecasting\\\\X_scaler_params.sca\",\n    \"y_scaler_params\": \".\\\\forecasting\\\\y_scaler_params.sca\",\n    \"training_dataset\": \".\\\\forecasting\\\\training_dataset_nvchb.csv\",\n    \"new_X_scaler_filename\": \".\\\\forecasting\\\\new_X_scaler_params.sca\",\n    \"new_y_scaler_filename\": \".\\\\forecasting\\\\new_y_scaler_params.sca\",\n    \"new_trained_model_filename\": \".\\\\forecasting\\\\new_trained_model.mdl\",\n    \"updating_dataset\": \".\\\\forecasting\\\\updating_dataset_nvchb.csv\"\n  }\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/init",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/forecast",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"forecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/test_forecast",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"test_forecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_measurements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"value": "{\n  \"DateTime\": \"2021-09-08 23:00:00\",\n  \"measurements\": {\n  \"T\": \"-5.5\",\n  \"U\": \"51.4\",\n  \"Cl\": \"100.0\",\n  \"I\": \"0.0\"\n  }\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/update_measurements",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"update_measurements"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
